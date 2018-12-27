@@ -31,11 +31,11 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: vueLoaderConfig
-      },
+      // {
+      //   test: /\.vue$/,
+      //   loader: 'vue-loader',
+      //   options: vueLoaderConfig
+      // },
       {
         test: /\.js$/,
         loader: 'babel-loader',
@@ -64,6 +64,41 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.vue$/,
+        use: {
+          loader: 'vue-loader',
+          // options: vueLoaderConfig,
+          options: {
+            vueLoaderConfig,
+            loaders: {
+              sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax=1',
+              scss: ['vue-style-loader!css-loader!sass-loader', {
+                loader: 'sass-resources-loader',
+                options: {
+                  resources: ['src/assets/css/*.scss']
+                }
+              }]
+            }
+          }
+        }
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              // Provide path to the file with resources
+              resources: ['src/assets/css/*.scss']
+            },
+          },
+        ],
       },
       {
         test: /\.ts$/,
