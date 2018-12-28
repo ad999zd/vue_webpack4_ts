@@ -73,6 +73,14 @@ module.exports = {
           options: {
             vueLoaderConfig,
             loaders: {
+              ts:  [
+                {
+                  loader: 'ts-loader',
+                  options: {
+                      appendTsSuffixTo: [/\.vue$/]
+                  }
+                }
+              ],
               sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax=1',
               scss: ['vue-style-loader!css-loader!sass-loader', {
                 loader: 'sass-resources-loader',
@@ -80,6 +88,9 @@ module.exports = {
                   resources: ['src/assets/css/*.scss']
                 }
               }]
+            },
+            options: {
+              esModule: true
             }
           }
         }
@@ -102,14 +113,14 @@ module.exports = {
       },
       {
         test: /\.ts$/,
-        exclude: /node_modules/,
+        exclude: resolve('node_modules'),
         enforce: 'pre',
         loader: 'tslint-loader'
       },
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
-        exclude: /node_modules/,
+        exclude: resolve('node_modules'),
         options: {
           appendTsSuffixTo: [/\.vue$/],
         }
