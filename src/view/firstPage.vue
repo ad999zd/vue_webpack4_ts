@@ -18,7 +18,7 @@ export default {
     this.msg = name
   },
   methods: {
-
+    
   }
 }
 </script>

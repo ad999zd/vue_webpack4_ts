@@ -90,11 +90,6 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
-  },
-  created () {
-    let name: string = "bob"
-    name = "Welcome to Your Vue.ts App"
-    this.msg = name
   }
 }
 </script>

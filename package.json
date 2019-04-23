@@ -2,7 +2,7 @@
   "name": "vue_webpack4_ts",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "dzhang <dzhang@hillinsight.com>",
+  "author": "dzhang <344013801@qq.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.ts",
